@@ -7,8 +7,10 @@ const maxRecords = 151;
 
 const convertPokemonToLi = (pokemon) => `
   <li class="pokemon ${pokemon.type}">
-    <span class="number">#${pokemon.number}</span>
-    <span class="name">${pokemon.name}</span>
+		<div class="info">
+			<span class="name">${pokemon.name}</span>
+			<span class="number">#${pokemon.number}</span>
+		</div>
     <div class="detail">
       <ol class="types">
         ${pokemon.types
