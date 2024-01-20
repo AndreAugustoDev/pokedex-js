@@ -1,24 +1,24 @@
 const api = "https://pokeapi.co/api/v2/pokemon";
 
-const pokeApi = {};
-
 const convertPokeApiDetailToPokemon = (pokeDetail) => {
-	const { id, name, types, sprites } = pokeDetail;
+	const { id, name, types, sprites, moves } = pokeDetail;
 	const pokemon = new Pokemon();
-	pokemon.number = id;
+	pokemon.id = id;
 	pokemon.name = name;
 	pokemon.types = types.map((typeSlot) => typeSlot.type.name);
 	pokemon.type = pokemon.types[0];
 	pokemon.sprite = sprites.other["official-artwork"].front_default;
+	pokemon.url = `${api}/${id}`;
+	pokemon.moves = moves;
 	return pokemon;
 };
 
-pokeApi.getPokemonDetails = async (pokemon) => {
+const getPokemonDetails = async (pokemon) => {
 	const response = await fetch(pokemon.url);
 	return convertPokeApiDetailToPokemon(await response.json());
 };
 
-pokeApi.getPokemon = async (offset = 0, limit = 10) => {
+const getPokemon = async (offset = 0, limit = 10) => {
 	const url = `${api}?offset=${offset}&limit=${limit}`;
 	try {
 		const response = await fetch(url);
@@ -32,7 +32,7 @@ pokeApi.getPokemon = async (offset = 0, limit = 10) => {
 	}
 };
 
-pokeApi.getPokemonCount = async () => {
+const getPokemonCount = async () => {
 	const response = await fetch(api);
 	try {
 		const data = await response.json();
@@ -40,4 +40,10 @@ pokeApi.getPokemonCount = async () => {
 	} catch (error) {
 		console.log(error);
 	}
+};
+
+const pokeApi = {
+	getPokemonDetails,
+	getPokemon,
+	getPokemonCount,
 };
