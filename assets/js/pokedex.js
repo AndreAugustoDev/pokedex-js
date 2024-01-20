@@ -3,7 +3,7 @@ const loadMoreButton = document.getElementById("loadMoreButton");
 
 let offset = 0;
 const limit = 12;
-const maxRecords = 151;
+let maxRecords = 151;
 
 const convertPokemonToLi = (pokemon) => `
   <li class="pokemon ${pokemon.type}">
@@ -33,6 +33,7 @@ const loadMorePokemon = async (offset, limit) => {
 };
 
 loadMorePokemon(offset, limit);
+maxRecords = pokeApi.getPokemonCount();
 
 document.addEventListener("click", (event) => {
 	if (event.target === loadMoreButton) {

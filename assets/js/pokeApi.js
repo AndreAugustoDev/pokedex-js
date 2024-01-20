@@ -1,3 +1,5 @@
+const api = "https://pokeapi.co/api/v2/pokemon";
+
 const pokeApi = {};
 
 const convertPokeApiDetailToPokemon = (pokeDetail) => {
@@ -17,7 +19,6 @@ pokeApi.getPokemonDetails = async (pokemon) => {
 };
 
 pokeApi.getPokemon = async (offset = 0, limit = 10) => {
-	const api = "https://pokeapi.co/api/v2/pokemon";
 	const url = `${api}?offset=${offset}&limit=${limit}`;
 	try {
 		const response = await fetch(url);
@@ -26,6 +27,16 @@ pokeApi.getPokemon = async (offset = 0, limit = 10) => {
 		const detailsRequest = pokemon.map(pokeApi.getPokemonDetails);
 		const pokemonDetails = await Promise.all(detailsRequest);
 		return pokemonDetails;
+	} catch (error) {
+		console.log(error);
+	}
+};
+
+pokeApi.getPokemonCount = async () => {
+	const response = await fetch(api);
+	try {
+		const data = await response.json();
+		return data.count;
 	} catch (error) {
 		console.log(error);
 	}
