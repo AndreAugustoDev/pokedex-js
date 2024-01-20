@@ -1,4 +1,4 @@
-class Pokemon {
+class Pokemon extends PokemonDetail {
 	number;
 	name;
 	type;

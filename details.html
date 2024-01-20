@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PokeDex</title>
+  <title></title>
 
   <!-- Normalize CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.css">
@@ -17,28 +17,20 @@
   <!-- CSS -->
   <link rel="stylesheet" href="assets/css/global.css">
   <link rel="stylesheet" href="assets/css/pokedex.css">
+  <link rel="stylesheet" href="assets/css/pokemonDetails.css">
   <link rel="stylesheet" href="assets/css/pokemonTypes.css">
 </head>
 
 <body>
-  <section class="content">
-    <h1 class="title">PokeDex</h1>
-
-    <ol class="pokemons" id="pokemonList">
-      <!-- Pokemon list here -->
-    </ol>
-
-    <div class="pagination">
-      <button id="loadMoreButton" type="button">Load More</button>
-    </div>
-  </section>
+  <div class="pokemonDetails">
+  </div>
 
   <!-- JavaScript -->
   <script src="assets/js/utils.js"></script>
   <script src="assets/js/pokemonDetailsModel.js"></script>
   <script src="assets/js/pokemonModel.js"></script>
   <script src="assets/js/pokeApi.js"></script>
-  <script src="assets/js/pokedex.js"></script>
+  <script src="assets/js/pokemonDetails.js"></script>
 </body>
 
 </html>

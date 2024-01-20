@@ -1,3 +1,13 @@
+.title {
+  text-align: center;
+  color: #fff;
+  font-size: 2.5rem;
+  padding: 1rem;
+  background-color: #dc143c;
+  margin: 0 .5rem;
+  border-radius: 0.75rem;
+}
+
 .pokemons {
   display: grid;
   grid-template-columns: 1fr;
@@ -11,13 +21,13 @@
   flex-direction: column;
   margin: .5rem;
   padding: 1rem;
-  border-radius: 1rem;
+  border-radius: 0.75rem;
 }
 
 .pokemon .info {
   display: flex;
   justify-content: space-between;
-  margin-bottom: .25rem;
+  margin-bottom: .5rem;
 }
 
 .pokemon .name {
@@ -25,11 +35,13 @@
   text-transform: capitalize;
   color: #fff;
   background-color: #808080;
+  width: 100%;
   border-radius: 0.75rem;
+  margin-right: 0.5rem;
   padding: .25rem .5rem;
 }
 
-.pokemon .number {
+.pokemon .id {
   color: white;
   font-size: 1.25rem;
   background-color: #B0C4DE;
@@ -43,7 +55,6 @@
 .pokemon .detail {
   display: flex;
   flex-direction: row;
-  align-items: center;
   justify-content: space-between;
 }
 

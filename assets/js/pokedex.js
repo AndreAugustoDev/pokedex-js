@@ -1,5 +1,5 @@
-const pokemonList = document.getElementById("pokemonList");
-const loadMoreButton = document.getElementById("loadMoreButton");
+const pokemonList = getElement("#pokemonList");
+const loadMoreButton = getElement("#loadMoreButton");
 
 let offset = 0;
 const limit = 12;
@@ -9,7 +9,7 @@ const convertPokemonToLi = (pokemon) => `
   <li class="pokemon ${pokemon.type}">
 		<div class="info">
 			<span class="name">${pokemon.name}</span>
-			<span class="number">#${pokemon.number}</span>
+			<span class="id">#${pokemon.id}</span>
 		</div>
     <div class="detail">
       <ol class="types">
@@ -17,8 +17,9 @@ const convertPokemonToLi = (pokemon) => `
 					.map((type) => `<li class="type ${type}">${type}</li>`)
 					.join("")}
       </ol>
-      <img src="${pokemon.sprite}" alt="${pokemon.name}">
+      <img class="sprite" src="${pokemon.sprite}" alt="${pokemon.name}">
     </div>
+		<div class="url" id="${pokemon.url}"></div>
   </li>
 `;
 
@@ -46,5 +47,14 @@ document.addEventListener("click", (event) => {
 		} else {
 			loadMorePokemon(offset, limit);
 		}
+	}
+});
+
+pokemonList.addEventListener("click", (event) => {
+	const target = event.target.closest(".pokemon");
+	if (target) {
+		const url = target.querySelector(".url").id;
+		localStorage.setItem("pokemonUrl", url);
+		window.location.href = "details.html";
 	}
 });
