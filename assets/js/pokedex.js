@@ -33,8 +33,12 @@ const loadMorePokemon = async (offset, limit) => {
 	}
 };
 
-loadMorePokemon(offset, limit);
 maxRecords = pokeApi.getPokemonCount();
+
+document.addEventListener(
+	"DOMContentLoaded",
+	async () => await loadMorePokemon(offset, limit),
+);
 
 document.addEventListener("click", (event) => {
 	if (event.target === loadMoreButton) {

@@ -17,7 +17,12 @@ const appendPokemonDetails = async (pokemon) => {
 				<div class="tabs">
     			<input type="radio" class="tabsRadio" name="tabs" id="about" checked>
     			<label for="about" class="tabsLabel">About</label>
-    			<ol class="tabsContent about"></ol>
+    			<div class="tabsContent about">
+						<p class="description">${pokemon.description}</p>
+						<p class="height">Height: ${pokemon.height} m</p>
+						<p class="weight">Weight: ${pokemon.weight} kg</p>
+						<p class="habitat">Habitat: ${pokemon.habitat}</p>
+					</div>
 
 					<input type="radio" class="tabsRadio" name="tabs" id="stats">
     			<label for="stats" class="tabsLabel">Base Stats</label>
