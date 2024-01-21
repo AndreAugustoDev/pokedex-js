@@ -34,3 +34,39 @@
   font-weight: bold;
   filter: brightness(0.9);
 }
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: .5rem;
+}
+
+.tabsLabel {
+  padding: .25rem .5rem;
+  cursor: pointer;
+  border-radius: 0.75rem;
+  background-color: cornflowerblue;
+}
+
+.tabsRadio {
+  display: none;
+}
+
+.tabsContent {
+  order: 1;
+  display: none;
+}
+
+.tabsRadio:checked+.tabsLabel {
+  font-weight: bold;
+  color: white;
+  border-bottom: 2px solid crimson;
+}
+
+.tabsRadio:checked+.tabsLabel+.tabsContent {
+  width: 100%;
+  display: initial;
+}

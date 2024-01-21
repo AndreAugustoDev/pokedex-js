@@ -14,7 +14,23 @@ const appendPokemonDetails = async (pokemon) => {
 						.map((type) => `<li class="type ${type}">${type}</li>`)
 						.join("")}
         </ol>
-        <ol class="moves"></ol>
+				<div class="tabs">
+    			<input type="radio" class="tabsRadio" name="tabs" id="about" checked>
+    			<label for="about" class="tabsLabel">About</label>
+    			<ol class="tabsContent about"></ol>
+
+					<input type="radio" class="tabsRadio" name="tabs" id="stats">
+    			<label for="stats" class="tabsLabel">Base Stats</label>
+    			<ol class="tabsContent stats"></ol>
+
+					<input type="radio" class="tabsRadio" name="tabs" id="evolution">
+    			<label for="evolution" class="tabsLabel">Evolution</label>
+					<ol class="tabsContent evolution"></ol>
+
+    			<input type="radio" class="tabsRadio" name="tabs" id="moves">
+    			<label for="moves" class="tabsLabel">Moves</label>
+					<ol class="tabsContent moves"></ol>
+			  </div>
       </div>
     </div>
   `;
