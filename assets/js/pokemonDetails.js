@@ -19,18 +19,36 @@ const appendPokemonDetails = async (pokemon) => {
     			<label for="about" class="tabsLabel">About</label>
     			<div class="tabsContent about">
 						<p class="description">${pokemon.description}</p>
-						<p class="height">Height: ${pokemon.height} m</p>
-						<p class="weight">Weight: ${pokemon.weight} kg</p>
-						<p class="habitat">Habitat: ${pokemon.habitat}</p>
+						<p class="height badge">Height: ${pokemon.height} m</p>
+						<p class="weight badge">Weight: ${pokemon.weight} kg</p>
+						<p class="habitat badge">Habitat: ${pokemon.habitat}</p>
 					</div>
 
 					<input type="radio" class="tabsRadio" name="tabs" id="stats">
     			<label for="stats" class="tabsLabel">Base Stats</label>
-    			<ol class="tabsContent stats"></ol>
+    			<ol class="tabsContent stats">
+						${Object.entries(pokemon.stats)
+							.map(
+								([statName, value]) => `
+  						<li class="badge">
+    						<p class="statName">${statName.toUpperCase().replace("-", " ")}:</p>
+								<p class="value"> ${value}</p>
+    						<div class="progress-bar">
+      						<div class="progress ${pokemon.type}" style="width: ${
+										(value / 250) * 100
+									}%"></div>
+    						</div>
+  						</li>
+						`,
+							)
+							.join("")}
+					</ol>
 
 					<input type="radio" class="tabsRadio" name="tabs" id="evolution">
     			<label for="evolution" class="tabsLabel">Evolution</label>
-					<ol class="tabsContent evolution"></ol>
+					<ol class="tabsContent evolution">
+						<p class="evolution">Feature not implemented</p>
+					</ol>
 
     			<input type="radio" class="tabsRadio" name="tabs" id="moves">
     			<label for="moves" class="tabsLabel">Moves</label>
@@ -61,6 +79,8 @@ const loadPokemonDetails = async (url) => {
 
 		const pokemonDetails = await appendPokemonDetails(pokemon);
 		pokemonDetailsPage.innerHTML += pokemonDetails;
+
+		document.title = pokemon.name[0].toUpperCase() + pokemon.name.slice(1);
 
 		const pokemonMoveTypes = await getMoveTypes(pokemon);
 		const pokemonMoveList = getElement(".moves");

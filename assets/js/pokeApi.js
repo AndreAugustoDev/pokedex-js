@@ -3,7 +3,7 @@ const apiPokemon = `${apiEndpoint}/pokemon`;
 const apiSpecie = `${apiEndpoint}/pokemon-species`;
 
 const convertPokeApiDetailToPokemon = async (pokeDetail) => {
-	const { id, name, types, sprites, moves, height, weight } = pokeDetail;
+	const { id, name, types, sprites, moves, height, weight, stats } = pokeDetail;
 
 	const pokemon = new Pokemon();
 
@@ -24,6 +24,16 @@ const convertPokeApiDetailToPokemon = async (pokeDetail) => {
 		.find((entry) => entry.language.name === "en")
 		.flavor_text.replace(/\f/g, " ")
 		.replace("POKéMON", "POKÉMON");
+
+	pokemon.stats = stats
+		.map((stat) => ({
+			name: stat.stat.name,
+			value: stat.base_stat,
+		}))
+		.reduce((r, { name, value }) => {
+			r[name] = value;
+			return r;
+		}, {});
 
 	return pokemon;
 };
